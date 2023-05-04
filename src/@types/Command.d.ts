@@ -27,14 +27,12 @@ type MenuFunction = (options: MenuOptions) => any;
 
 export type CommandType = {
     userPermissions?: PermissionResolvable[];
-    // Limit to main warden discord only
     main?: boolean;
     run: RunFunction;
 } & ChatInputApplicationCommandData;
 
 export type MenuType = {
     userPermissions?: PermissionResolvable[];
-    // Limit to main warden discord only
     main?: boolean;
     run: MenuFunction;
 } & (MessageApplicationCommandData | UserApplicationCommandData);

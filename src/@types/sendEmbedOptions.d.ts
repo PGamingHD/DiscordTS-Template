@@ -7,7 +7,6 @@ import {
     User,
 } from 'discord.js';
 
-// sendEmbed() options
 export interface sendEmbedOptions {
     interaction?: CommandInteraction;
     channel?: TextBasedChannel | User;
