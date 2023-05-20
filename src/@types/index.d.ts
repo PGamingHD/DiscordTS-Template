@@ -1,5 +1,8 @@
 export { sendEmbedOptions } from './sendEmbedOptions';
-export { CommandType, MenuType } from './Command';
+export {
+    CommandType,
+    MenuType
+} from './Command';
 export { RegisterCommandsOptions } from './Client';
 
 export enum Colours {

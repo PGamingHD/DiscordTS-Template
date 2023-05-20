@@ -1,8 +1,7 @@
 import {
     CommandInteractionOptionResolver,
     ModalSubmitFields,
-    Events,
-    EmbedBuilder
+    Events
 } from 'discord.js';
 import { client } from '../bot';
 import { Event } from '../structures/Event';

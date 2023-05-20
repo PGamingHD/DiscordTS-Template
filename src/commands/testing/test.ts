@@ -1,4 +1,7 @@
-import { ApplicationCommandOptionType, ChannelType } from 'discord.js';
+import {
+    ApplicationCommandOptionType,
+    ChannelType
+} from 'discord.js';
 import { Command } from '../../structures/Command';
 import { sendSuccess } from "../../utils/messages";
 

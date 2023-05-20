@@ -1,5 +1,5 @@
 require("dotenv").config();
-import {ShardingManager} from "discord.js";
+import { ShardingManager } from "discord.js";
 import logger from './utils/logger';
 
 const manager = new ShardingManager(__dirname + '/bot.js', {

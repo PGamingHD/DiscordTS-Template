@@ -1,6 +1,6 @@
 import { ApplicationCommandType } from 'discord.js';
 import { ContextMenu } from '../../structures/ContextMenu';
-import { sendError, sendSuccess } from '../../utils/messages';
+import { sendSuccess } from '../../utils/messages';
 
 export default new ContextMenu({
     name: 'Test ID',

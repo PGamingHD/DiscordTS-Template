@@ -1,7 +1,5 @@
-
 import {
-    PrismaClient,
-    Users
+    PrismaClient
 } from '@prisma/client';
 
 export class Database {

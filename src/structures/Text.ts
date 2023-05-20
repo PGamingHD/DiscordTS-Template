@@ -1,4 +1,4 @@
-import {TextType} from "../@types/Command";
+import { TextType } from "../@types/Command";
 
 export class Text {
     constructor(textOptions: TextType) {

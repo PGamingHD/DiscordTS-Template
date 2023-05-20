@@ -1,9 +1,14 @@
-import {ActionRowBuilder, AnyAPIActionRowComponent, ButtonBuilder, ButtonStyle, EmbedBuilder, Events} from 'discord.js';
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    EmbedBuilder,
+    Events
+} from 'discord.js';
 import { Event } from '../structures/Event';
 import { client } from "../bot";
 import { escapeRegex } from "../utils/misc";
-import {CommandType, TextType} from "../@types/Command";
-import {Colours} from "../@types/Colours";
+import { Colours } from "../@types/Colours";
 
 
 export default new Event(Events.MessageCreate, async (message) => {
@@ -11,7 +16,6 @@ export default new Event(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
     if (!client || !client.user) return;
 
-    //SUPPORT FOR MULTIPLE / GUILD PREFIXES CAN BE IMPLEMENTED HERE
     const prefix: string = '!';
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})`);
     if (!prefixRegex.test(message.content)) return;

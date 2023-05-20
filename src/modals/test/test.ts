@@ -1,10 +1,7 @@
 import {
     ApplicationCommandOptionType,
     ChannelType,
-    EmbedBuilder,
-    Guild,
-    GuildBasedChannel,
-    GuildTextBasedChannel,
+    EmbedBuilder
 } from 'discord.js';
 import { Modal } from '../../structures/Modal';
 import {Colours} from "../../@types/Colours";

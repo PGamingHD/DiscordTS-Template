@@ -1,4 +1,4 @@
-import {ExtendedClient} from './structures/Client';
+import { ExtendedClient } from './structures/Client';
 import logger from './utils/logger';
 
 export const client = new ExtendedClient();
