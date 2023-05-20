@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/bot.ts",
     "start:dev": "ts-node-dev src/index.ts",
-    "start:production": "node dist/index.js",
+    "start:production": "tsc && node dist/index.js",
     "build": "tsc",
     "fix": "gts fix"
   },

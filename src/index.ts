@@ -2,9 +2,8 @@ require("dotenv").config();
 import {ShardingManager} from "discord.js";
 import logger from './utils/logger';
 
-const manager = new ShardingManager(__dirname + '/bot.ts', {
+const manager = new ShardingManager(__dirname + '/bot.js', {
     token: process.env.TOKEN,
-    execArgv: ['-r', 'ts-node/register']
 });
 
 manager.on('shardCreate', shard => {

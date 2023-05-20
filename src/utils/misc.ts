@@ -1,5 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
+import logger from "./logger";
 
 export function generateErrorID(): string {
     return (Math.random() + 1).toString(36).substring(3);
@@ -28,58 +29,14 @@ export function formatSeconds(seconds: number) {
     return time.join(' ');
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function enumToMap(enumeration: any): Map<string, string | number> {
-    const map = new Map<string, string | number>();
-    for (const key in enumeration) {
-        if (!isNaN(Number(key))) continue;
-        const val = enumeration[key] as string | number;
-        if (val !== undefined && val !== null) map.set(key, val);
-    }
-    return map;
-}
-
-export function mapAnyType(enumeration: any) {
-    const map = enumToMap(enumeration);
-    const choices = Array.from(map.entries()).map(m => {
-        let x = m[0];
-        if (x.includes('_')) {
-            const split = x.split('_');
-            x = `${capitalize(split[0])}${capitalize(split[1])}`;
-        } else x = capitalize(x);
-        return {
-            name: x,
-            value: `${m[1]}`,
-        };
-    });
-
-    return choices;
-}
-
 export function hasUpperCase(str: string) {
     return str !== str.toLowerCase();
 }
 
-export async function uploadText(text: string, time: string) {
+export function escapeRegex(str: string) {
     try {
-        const formData = new FormData();
-
-        formData.append('lang', 'json');
-        formData.append('expire', time);
-        formData.append('password', '');
-        formData.append('title', '');
-        formData.append('text', text);
-
-        const response = await axios.request({
-            url: 'https://paste.mk3ext.dev/paste/new',
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            data: formData,
-        });
-
-        return response.request.res.responseUrl;
+        return str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
     } catch (e) {
-        console.log(e);
-        return;
+        return logger.error(e);
     }
 }
