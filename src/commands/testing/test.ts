@@ -4,6 +4,7 @@ import {
 } from 'discord.js';
 import { Command } from '../../structures/Command';
 import { sendSuccess } from "../../utils/messages";
+import { generateGuid } from "../../utils/misc";
 
 export default new Command({
     name: 'test',
@@ -11,6 +12,7 @@ export default new Command({
     defaultMemberPermissions: 'Administrator',
     run: async ({ interaction, client }) => {
         await sendSuccess(interaction, 'Logged to console!', true);
-        return console.log('This is what is sent when the command is triggered!');
+        const test = generateGuid();
+        return console.log(`This is what is sent when the command is triggered! ${test}`);
     },
 });

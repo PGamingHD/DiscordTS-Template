@@ -1,10 +1,23 @@
 import logger from "./logger";
 
-export function generateErrorID(): string {
-    return (Math.random() + 1).toString(36).substring(3);
+export function generateGuid(): string {
+    var d: number = new Date().getTime();
+    var d2: number = ((typeof performance !== 'undefined') && performance.now && (performance.now()*1000)) || 0;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c: string) {
+        var r: number = Math.random() * 16;
+        if(d > 0){
+            r = (d + r)%16 | 0;
+            d = Math.floor(d/16);
+        } else {
+            r = (d2 + r)%16 | 0;
+            d2 = Math.floor(d2/16);
+        }
+
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
 }
 
-export function capitalize(string: string): string {
+export function capitalizeFirst(string: string): string {
     let toReturn: string = string;
     try {
         toReturn = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();

@@ -54,6 +54,5 @@ export default new Event(Events.InteractionCreate, async interaction => {
         }
     }
 
-    interaction.isChannelSelectMenu()
     return;
 });
