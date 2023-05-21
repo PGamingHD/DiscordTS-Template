@@ -5,12 +5,6 @@ export {
 } from './Command';
 export { RegisterCommandsOptions } from './Client';
 
-export enum Colours {
-    YELLOW = 0xffff00,
-    RED = 0x800000,
-    GREEN = 0x008000,
-}
-
 declare global {
     namespace NodeJS {
         interface ProcessEnv {

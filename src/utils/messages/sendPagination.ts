@@ -26,7 +26,7 @@ export default async function (interaction: CommandInteraction, pages: APIEmbed[
         if (!interaction.deferred) await interaction.deferReply();
 
         if (pages.length === 1) {
-            const page = await interaction.editReply({
+            const page: Message<boolean> = await interaction.editReply({
                 embeds: pages,
                 components: [],
             });
@@ -41,8 +41,13 @@ export default async function (interaction: CommandInteraction, pages: APIEmbed[
                 .setEmoji('⏪')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false);
+        } else {
+            maxBack = new ButtonBuilder()
+                .setCustomId('exit1')
+                .setEmoji('⬛')
+                .setStyle(ButtonStyle.Secondary)
+                .setDisabled(false);
         }
-
         const prev: ButtonBuilder = new ButtonBuilder()
             .setCustomId('prev')
             .setEmoji('◀')
@@ -58,7 +63,6 @@ export default async function (interaction: CommandInteraction, pages: APIEmbed[
             .setEmoji('▶')
             .setStyle(ButtonStyle.Success)
             .setDisabled(false);
-
         let maxNext: ButtonBuilder;
         if (pages.length >= 5) {
             maxNext = new ButtonBuilder()
@@ -66,16 +70,15 @@ export default async function (interaction: CommandInteraction, pages: APIEmbed[
                 .setEmoji('⏩')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false);
-        }
-
-        let buttonRow: ActionRowBuilder<ButtonBuilder>;
-        if (pages.length >= 5) {
-            //@ts-ignore
-            buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents(maxBack, prev, home, next, maxNext);
         } else {
-            buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents(prev, home, next);
+            maxNext = new ButtonBuilder()
+                .setCustomId('exit')
+                .setEmoji('⬛')
+                .setStyle(ButtonStyle.Secondary)
+                .setDisabled(false)
         }
 
+        const buttonRow: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(maxBack, prev, home, next, maxNext);
         let index: number = 0;
 
         const currentPage: Message<boolean> = await interaction.editReply({

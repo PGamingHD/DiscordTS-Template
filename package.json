@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
+    "@types/lodash": "^4.14.194",
     "@types/node": "^18.16.3",
     "typescript": "^5.0.4"
   },
@@ -19,11 +20,12 @@
     "@prisma/client": "^4.13.0",
     "axios": "^1.4.0",
     "chalk": "^4.0.0",
-    "discord.js": "^14.9.0",
+    "discord.js": "^14.11.0",
     "dotenv": "^16.0.3",
     "form-data": "^4.0.0",
     "glob": "^7.2.3",
     "gts": "^3.1.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "prisma": "^4.13.0",
     "ts-node": "^10.9.1",

@@ -6,12 +6,10 @@ import {
 import { client } from '../bot';
 import { Event } from '../structures/Event';
 import logger from '../utils/logger';
-import {Colours} from "../@types/Colours";
 import {CommandType, MenuType, ModalType} from "../@types/Command";
 
 
 export default new Event(Events.InteractionCreate, async interaction => {
-    // Chat Input Commands
     if (interaction.isChatInputCommand()) {
         const command: CommandType | undefined = client.commands.get(interaction.commandName);
         if (!command) return interaction.followUp('You have used a non existent command');
@@ -32,7 +30,6 @@ export default new Event(Events.InteractionCreate, async interaction => {
         }
     }
 
-    // Context Menu Commands
     else if (interaction.isMessageContextMenuCommand() || interaction.isUserContextMenuCommand()) {
         const command: MenuType | undefined = client.contextmenus.get(interaction.commandName);
         if (!command) return interaction.followUp('You have used a non existent context menu');
@@ -56,5 +53,7 @@ export default new Event(Events.InteractionCreate, async interaction => {
             logger.error(e)
         }
     }
+
+    interaction.isChannelSelectMenu()
     return;
 });

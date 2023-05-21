@@ -5,7 +5,6 @@ import {
 } from 'discord.js';
 import { Modal } from '../../structures/Modal';
 import {Colours} from "../../@types/Colours";
-import db from "../../utils/database";
 
 export default new Modal({
     customId: 'testModal',

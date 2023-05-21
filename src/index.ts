@@ -2,7 +2,7 @@ require("dotenv").config();
 import { ShardingManager } from "discord.js";
 import logger from './utils/logger';
 
-const manager = new ShardingManager(__dirname + '/bot.js', {
+const manager: ShardingManager = new ShardingManager(__dirname + '/bot.js', {
     token: process.env.TOKEN,
 });
 

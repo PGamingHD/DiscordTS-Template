@@ -1,15 +1,15 @@
 import {
     ApplicationCommandOptionType,
     ApplicationCommandType,
-    ChannelType,
+    ChannelType
 } from 'discord.js';
 import { Text } from '../../structures/Text';
 
 export default new Text({
-    name: 'hey',
+    name: 'test',
     type: ApplicationCommandType.Message,
     hidden: true,
-    run: async ({message, client, args}) => {
+    run: async ({message, client, args}): Promise<void> => {
         await message.reply(`Yo ${args[0] === undefined ? 'no args' : args.length <= 1 ? args[0] : args.join(' ')}`);
     },
 });

@@ -7,6 +7,6 @@ export default new ContextMenu({
     type: ApplicationCommandType.Message,
     defaultMemberPermissions: 'Administrator',
     run: async ({ interaction }) => {
-        await sendSuccess(interaction, `This message has ID: ${interaction.targetId}`, true)
+        await sendSuccess(interaction, `This message has ID: ${interaction.targetId}`, true);
     },
 });
