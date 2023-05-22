@@ -6,7 +6,7 @@ import {
     CommandInteraction,
     ComponentType,
     InteractionCollector,
-    InteractionResponse,
+    InteractionResponse, MentionableSelectMenuBuilder, MentionableSelectMenuInteraction,
     UserSelectMenuBuilder,
     UserSelectMenuInteraction
 } from 'discord.js';
@@ -21,21 +21,21 @@ export default async function (interaction: CommandInteraction, ephemeral: boole
         if (idle < 30000) throw new Error('Idle time must be more than 30 seconds');
 
 
-        const selectMenu: UserSelectMenuBuilder = new UserSelectMenuBuilder({
+        const selectMenu: MentionableSelectMenuBuilder = new MentionableSelectMenuBuilder({
             customId,
             placeholder,
             maxValues: maxCollect,
         })
 
-        const row: ActionRowBuilder<UserSelectMenuBuilder> = new ActionRowBuilder<UserSelectMenuBuilder>().addComponents(selectMenu);
+        const row: ActionRowBuilder<MentionableSelectMenuBuilder> = new ActionRowBuilder<MentionableSelectMenuBuilder>().addComponents(selectMenu);
 
         const int: InteractionResponse<boolean> =  await interaction.reply({content, components: [row], ephemeral});
 
-        const collector: InteractionCollector<UserSelectMenuInteraction<CacheType>> = await int.createMessageComponentCollector({
-            componentType: ComponentType.UserSelect,
+        const collector: InteractionCollector<MentionableSelectMenuInteraction<CacheType>> = await int.createMessageComponentCollector({
+            componentType: ComponentType.MentionableSelect,
             time,
             idle,
-            filter: (i: UserSelectMenuInteraction<CacheType>): boolean => i.user.id === interaction.user.id
+            filter: (i: MentionableSelectMenuInteraction<CacheType>): boolean => i.user.id === interaction.user.id
         });
 
         collector.on('collect', collectFunc);
